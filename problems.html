@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Brain Benders - The Challenge</title>
+<style>
+  body {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 20px;
+    margin: 0;
+  }
+  h1 {
+    text-align: center;
+    font-size: 2.8em;
+    color: #8a2be2;
+    text-shadow: 0 0 10px #8a2be2;
+    margin-bottom: 20px;
+  }
+  .foreshadow {
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+    padding: 15px;
+    background-color: #2c2c2c;
+    border: 3px solid #8a2be2;
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px #8a2be2;
+    font-size: 1.2em;
+    line-height: 1.5em;
+  }
+  .problem-box {
+    max-width: 900px;
+    margin: 0 auto 20px auto;
+    background-color: #222;
+    border: 3px solid #8a2be2;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: inset 0 0 10px #8a2be2;
+  }
+  .problem-box h2 {
+    margin-top: 0;
+    color: #ff69b4;
+  }
+  .input-section {
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+    text-align: center;
+  }
+  input[type="text"] {
+    padding: 12px;
+    font-size: 1.2em;
+    width: 60%;
+    border-radius: 8px;
+    border: 2px solid #555;
+    background-color: #333;
+    color: #fff;
+  }
+  button {
+    padding: 12px 24px;
+    margin-top: 15px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 8px;
+    background-color: #8a2be2;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 0 10px #8a2be2;
+    transition: background-color 0.3s;
+  }
+  button:hover {
+    background-color: #b23dd3;
+  }
+  #solutionContainer {
+    max-width: 900px;
+    margin: 0 auto 30px auto;
+    padding: 15px;
+    background-color: #2c2c2c;
+    border: 3px solid #8a2be2;
+    border-radius: 10px;
+    display: none; /* Hidden initially */
+  }
+  #solutionContainer h3 {
+    margin-top: 0;
+    color: #ffd700;
+  }
+  /* Spooky button at the bottom */
+  #solveButton {
+    display: block;
+    margin: 40px auto;
+    padding: 15px 30px;
+    font-size: 1.4em;
+    background-color: #4b0082;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 0 15px #4b0082;
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+  #solveButton:hover {
+    background-color: #6a0dad;
+    box-shadow: 0 0 20px #6a0dad;
+  }
+</style>
+</head>
+<body>
+
+<h1>🧠 The Challenge of the Fourth Exponent 🧠</h1>
+<div class="foreshadow">
+  <p>Within these walls lie puzzles so complex that only the most seasoned mathematicians dare to face them unarmed. Beware—these brain benders are said to reach the fourth exponent in difficulty, where mind and madness collide. Are you prepared to test your limits?</p>
+</div>
+
+<div class="problem-box" id="brainBender1">
+  <h2>1. The Invisible Cube</h2>
+  <p><strong>Problem:</strong> Imagine a transparent, nearly invisible 3x3x3 cube composed of 27 small cubes. A tiny robot starts at the center of the middle small cube.</p>
+  <p>The robot can move to adjacent small cubes sharing a face, visiting each exactly once and returning to the start.</p>
+  <p><em>Questions:</em></p>
+  <ul>
+    <li>Is this possible?</li>
+    <li>If not, why? What's the maximum number of small cubes it can visit?</li>
+  </ul>
+</div>
+
+<div class="problem-box" id="brainBender2">
+  <h2>2. The Paradoxical Gates</h2>
+  <p><strong>Problem:</strong> Four gates A, B, C, D, each hiding treasure or trap. Two treasures and two traps. Statements:</p>
+  <ul>
+    <li>A: "B is a trap."</li>
+    <li>B: "C is a treasure."</li>
+    <li>C: "D is a trap."</li>
+    <li>D: "A and B are treasures."</li>
+  </ul>
+  <p><em>Question:</em> Determine which gates hide treasures and which traps.</p>
+</div>
+
+<div class="problem-box" id="brainBender3">
+  <h2>3. The Infinite Sequence</h2>
+  <p><strong>Problem:</strong> Define \(a_n\) such that in the first \(n\) terms, the count of digit '1' equals \(a_n\). Find \(a_n\), show it's well-defined, and analyze its growth.</p>
+</div>
+
+<div class="problem-box" id="brainBender4">
+  <h2>4. The Secret Number</h2>
+  <p><strong>Problem:</strong> N between 1 and 100. Questions: "Is N ≥ x?" with responses guiding you to identify N within 7 questions. Design a strategy.</p>
+</div>
+
+<div class="input-section">
+  <p>Enter your answers below (for example, the answer to problem 1):</p>
+  <input type="text" id="userInput" placeholder="Your answer here" />
+  <br/>
+  <button id="solutionToggle" onclick="revealSolutions()">Solutions</button>
+</div>
+
+<div id="solutionContainer">
+  <h3>Solutions & Explanations</h3>
+
+  <h4>1. The Invisible Cube</h4>
+  <p><em>Answer:</em> Impossible to visit all 27 cubes in a cycle because the grid's coloring (black/white) prevents a Hamiltonian cycle. The robot can visit at most 26 cubes, forming a path but not returning to start.</p>
+
+  <h4>2. The Paradoxical Gates</h4>
+  <p><em>Answer:</em> Gates B and C hide treasures; Gates A and D hide traps.</p>
+
+  <h4>3. The Infinite Sequence</h4>
+  <p><em>Answer:</em> The sequence is \(a_n = \lfloor n/2 \rfloor\). It grows without bound and is well-defined.</p>
+
+  <h4>4. The Secret Number</h4>
+  <p><em>Answer:</em> Use a binary search approach, asking questions like "Is N ≥ 50?" and narrowing down the range based on responses, within 7 questions guaranteed.</p>
+</div>
+
+<script>
+  function revealSolutions() {
+    const container = document.getElementById('solutionContainer');
+    if (container.style.display === 'none') {
+      container.style.display = 'block';
+      document.getElementById('solutionToggle').textContent = 'Hide Solutions';
+    } else {
+      container.style.display = 'none';
+      document.getElementById('solutionToggle').textContent = 'Solutions';
+    }
+  }
+</script>
+
+</body>
+</html>
